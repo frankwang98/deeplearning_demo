@@ -5,8 +5,7 @@ AI模型训练、测试、部署。
 
 ## 环境
 1. Windows-Python   
-训练和测试在Windows下，Miniconda+CUDA12.0+Pytorch，Pytorch安装指令：`pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121` （安装GPU版本有问题）
-
+训练和测试在Windows下，Miniconda+CUDA12.0+Pytorch，Pytorch安装指令：`pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121` （安装GPU版本有问题）   
 大多数github仓库都有requirements依赖，只需安装即可：`pip install -r requirements.txt`   
 pip安装失败时，注意要把梯子先关掉。
 
