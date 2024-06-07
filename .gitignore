@@ -14,7 +14,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -162,6 +161,5 @@ cython_debug/
 #.idea/
 *.pkl
 *.zip
-data/
 .ipynb_checkpoints
 *.ckpt
