@@ -1,5 +1,5 @@
-# pytorch_perception
-AI模型训练、测试、部署。
+# deeplearning_demo
+AI模型训练、测试、部署
 
 之前只是零零散散写过一点东西，这次整理出来，记录自己遇到的一些坑。
 
