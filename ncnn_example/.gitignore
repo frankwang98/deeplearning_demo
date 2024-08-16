@@ -1,4 +1,4 @@
-build
+build/
 data/models
 vs2017
 cmake-*
