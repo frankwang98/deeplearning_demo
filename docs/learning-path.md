@@ -8,21 +8,25 @@
 
 ## 2. 从数字到类别
 
+完成[第二课](first-classifier.md)，理解模型如何从多个类别中做选择。检查验证准确率之外，也要学会阅读混淆矩阵和决策边界，并用独立推理脚本加载训练产物。
+
+## 3. 从分类走到图片
+
 依次阅读 `pytorch_example/01-basics` 中的线性回归、逻辑回归和前馈神经网络。理解回归输出连续值，分类输出类别概率；观察训练集准确率和测试集准确率为何不同。
 
-## 3. 处理图片与序列
+## 4. 处理图片与序列
 
 运行 `pytorch_example/02-intermediate` 的 CNN、RNN、双向 RNN 和 ResNet。重点记录输入张量形状如何变化，以及卷积、循环单元、残差连接分别解决什么问题。
 
-## 4. 训练自己的数据
+## 5. 训练自己的数据
 
 `pytorch_example/lenet_mouth` 展示自定义视觉任务。先确认数据集划分，再训练和检测。练习：记录类别分布、固定随机种子、保留一次失败实验及原因。
 
-## 5. 把模型交给 C++
+## 6. 把模型交给 C++
 
 阅读 [C++ 推理](cpp-inference.md)。理解模型转换、运行时、预处理、推理、后处理是一条不可拆开的契约。相同网络若归一化、颜色顺序或标签不同，也会给出错误结果。
 
-## 6. 进入工程系统
+## 7. 进入工程系统
 
 根据方向选择 TensorRT、YOLOP、BEVDet、PointPillars 或 ROS 案例。先建立端到端延迟和任务指标，再优化单个算子。可继续阅读 `awesome_hub` 的[具身智能基础](https://github.com/frankwang98/awesome_hub/blob/main/docs/embodied-ai/foundations.md)和[部署与评测](https://github.com/frankwang98/awesome_hub/blob/main/docs/embodied-ai/deployment-evaluation.md)，把感知模型放进“感知 → 决策 → 执行 → 反馈”的完整闭环。
 

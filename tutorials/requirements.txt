@@ -1,0 +1,3 @@
+# Shared CPU dependency for the self-contained beginner lessons.
+numpy==2.1.3
+torch==2.5.1

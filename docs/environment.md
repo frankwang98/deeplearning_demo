@@ -6,7 +6,7 @@
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -r tutorials/01-first-model/requirements.txt \
+python -m pip install -r tutorials/requirements.txt \
   --index-url https://download.pytorch.org/whl/cpu
 ```
 

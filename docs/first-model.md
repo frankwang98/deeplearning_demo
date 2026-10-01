@@ -16,4 +16,4 @@ python tutorials/01-first-model/train.py
 2. 使用 `--lr 0.001` 和 `--lr 0.5`，解释学习率如何影响收敛。
 3. 把数据规律改成 `y = -3x + 4`，先写出你预期的权重和偏置，再运行验证。
 
-能够回答“为什么验证阶段不调用 `backward()`”“为何保存后还要重新加载测试”，就可以进入 `pytorch_example/01-basics`。
+能够回答“为什么验证阶段不调用 `backward()`”“为何保存后还要重新加载测试”，就可以进入[第二课：分类](first-classifier.md)。
