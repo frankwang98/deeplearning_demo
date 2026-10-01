@@ -17,7 +17,8 @@
 | 4. 视觉网络 | CNN、RNN、ResNet、GAN、VAE | `pytorch_example/02-intermediate`、`03-advanced` |
 | 5. 自有数据 | 训练和加载嘴部分类模型 | `pytorch_example/lenet_mouth` |
 | 6. C++ 推理 | 模型文件、前后处理、MNN / NCNN | [C++ 部署](docs/cpp-inference.md) |
-| 7. 工程部署 | TensorRT、YOLO、BEV、ROS | `tensorrt_example`、`pytorch_example/yolov5`、`yolop` |
+| 7. 端到端学习 | 行为克隆、开环与闭环评测 | [端到端驾驶实验](projects/end_to_end_driving/README.md) |
+| 8. 工程部署 | TensorRT、YOLO、BEV、ROS | `tensorrt_example`、`pytorch_example/yolov5`、`yolop` |
 
 完整顺序、每阶段目标和练习见 [AI 学习路线](docs/learning-path.md)。第一次学习建议只运行第一课，不要一次安装所有子项目的依赖。
 
@@ -69,6 +70,7 @@ cmake --build build-ncnn -j
 ## 仓库结构
 
 - `tutorials/`：为初学者新增的、可独立运行的小实验；前两课都只需要 CPU。
+- `projects/end_to_end_driving/`：从状态到控制开始的端到端驾驶项目。
 - `pytorch_example/`：作者历史训练示例，以及 YOLOP / YOLOv5 等完整项目。
 - `mnn_example/`、`ncnn_example/`：轻量 C++ 端侧推理。
 - `tensorrt_example/`：TensorRT、BEV、PointPillars 和 ROS 部署案例。
@@ -76,7 +78,7 @@ cmake --build build-ncnn -j
 
 ## 验证范围
 
-原有示例来自作者过去的本地真实测试，旧说明保存在各模块的 `README.legacy.md`。本次维护实际验证了第一课 CPU 训练、公共回归测试，以及 MNN 2.9.3 的完整编译与生命周期测试；深层目录包含若干上游项目，各自依赖、模型和硬件不同，需按对应目录说明运行。CI 负责可重复检查代码格式、公共 C++ 测试与第一课训练，不会假装验证没有模型权重或 GPU 的推理结果。
+原有示例来自作者过去的本地真实测试，旧说明保存在各模块的 `README.legacy.md`。本次维护实际验证了两节 CPU 入门课、端到端策略的训练与闭环评测、公共回归测试，以及 MNN 2.9.3 的完整编译与生命周期测试；深层目录包含若干上游项目，各自依赖、模型和硬件不同，需按对应目录说明运行。CI 负责重复检查代码格式、公共 C++ 测试、入门训练和端到端闭环指标，不会把缺少模型权重或 GPU 的项目标为已验证。
 
 ## 参与维护
 

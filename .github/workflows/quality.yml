@@ -36,3 +36,9 @@ jobs:
           python tutorials/02-first-classifier/infer.py --checkpoint /tmp/first-classifier/classifier.pt --x 1.4 --y -0.7
       - name: Check the classifier learned the data
         run: python -c "import json; d=json.load(open('/tmp/first-classifier/metrics.json')); assert d['validation_accuracy'] > .95; assert len(d['confusion_matrix']) == 3"
+      - name: Train and evaluate the end-to-end policy
+        run: |
+          python projects/end_to_end_driving/01_state_to_control/train.py --epochs 120 --output /tmp/end-to-end-state
+          python projects/end_to_end_driving/01_state_to_control/evaluate.py --checkpoint /tmp/end-to-end-state/policy.pt --output /tmp/end-to-end-state --episodes 12 --steps 300 --route-length 180
+      - name: Check closed-loop driving
+        run: python -c "import json; d=json.load(open('/tmp/end-to-end-state/evaluation.json')); assert d['learned']['completion_rate'] >= .9; assert d['learned']['off_road_rate'] <= .1"

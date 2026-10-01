@@ -26,7 +26,11 @@
 
 阅读 [C++ 推理](cpp-inference.md)。理解模型转换、运行时、预处理、推理、后处理是一条不可拆开的契约。相同网络若归一化、颜色顺序或标签不同，也会给出错误结果。
 
-## 7. 进入工程系统
+## 7. 理解端到端闭环
+
+运行[端到端驾驶项目](end-to-end-driving.md)，用行为克隆训练状态到控制策略，并比较开环验证损失与闭环完成率。理解策略执行后会改变下一时刻的数据分布。
+
+## 8. 进入工程系统
 
 根据方向选择 TensorRT、YOLOP、BEVDet、PointPillars 或 ROS 案例。先建立端到端延迟和任务指标，再优化单个算子。可继续阅读 `awesome_hub` 的[具身智能基础](https://github.com/frankwang98/awesome_hub/blob/main/docs/embodied-ai/foundations.md)和[部署与评测](https://github.com/frankwang98/awesome_hub/blob/main/docs/embodied-ai/deployment-evaluation.md)，把感知模型放进“感知 → 决策 → 执行 → 反馈”的完整闭环。
 
