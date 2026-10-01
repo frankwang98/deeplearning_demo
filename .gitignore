@@ -166,3 +166,7 @@ cython_debug/
 *.onnx*
 *.engine
 # src/CMakeLists.txt
+# Local CMake builds and tutorial outputs
+/build*/
+/runs/
+/result.jpg

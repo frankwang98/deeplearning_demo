@@ -1,22 +1,17 @@
-cmake_minimum_required(VERSION 3.1)
-project(VisionEngine)
-
-Option(MIRROR_OPENMP "openmp support" ON)
-Option(MIRROR_VULKAN "vulkan compute used" OFF)
-Option(MIRROR_INSTALL_SDK "install mirror library and headers" ON)
-Option(MIRROR_BUILD_FACE "build face test" ON)
-Option(MIRROR_BUILD_OBJECT "build object test" ON)
-Option(MIRROR_BUILD_CLASSIFIER "build classifier test" ON)
-
-include_directories(/opt/ncnn/include/ncnn)
-link_directories(/opt/ncnn/lib)
-
-set(CMAKE_PREFIX_PATH
-    ${CMAKE_PREFIX_PATH}
-    D:/library/protobuf
-    )
-find_package(Protobuf REQUIRED)
-
-# add_subdirectory(ncnn-20210525-full-source)
-
+cmake_minimum_required(VERSION 3.16)
+project(NCNNVisionDemo LANGUAGES CXX)
+include(${CMAKE_CURRENT_LIST_DIR}/../cmake/VisionOptions.cmake)
+option(MIRROR_VULKAN "Enable Vulkan; requires Vulkan-enabled NCNN" OFF)
+option(MIRROR_INSTALL_SDK "Install NCNN wrapper and public headers" ON)
+if(NCNN_ROOT)
+  list(PREPEND CMAKE_PREFIX_PATH "${NCNN_ROOT}")
+endif()
+find_package(ncnn CONFIG REQUIRED)
+# Older NCNN packages export -fno-exceptions to every consumer. This project uses
+# standard-library error handling, so keep that implementation detail inside NCNN.
+get_target_property(NCNN_INTERFACE_OPTIONS ncnn INTERFACE_COMPILE_OPTIONS)
+if(NCNN_INTERFACE_OPTIONS)
+  list(REMOVE_ITEM NCNN_INTERFACE_OPTIONS -fno-exceptions)
+  set_property(TARGET ncnn PROPERTY INTERFACE_COMPILE_OPTIONS "${NCNN_INTERFACE_OPTIONS}")
+endif()
 add_subdirectory(src)

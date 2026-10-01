@@ -1,9 +1,6 @@
-cmake_minimum_required(VERSION 3.1)
-project(VisionEngine)
-
-Option(MIRROR_OPENMP "openmp support" ON)
-Option(MIRROR_BUILD_OBJECT "build object test" ON)
-Option(MIRROR_BUILD_CLASSIFIER "build classifier test" ON)
-Option(MIRROR_BUILD_FACE "build face test" ON)
-
+cmake_minimum_required(VERSION 3.16)
+project(MNNVisionDemo LANGUAGES CXX)
+include(${CMAKE_CURRENT_LIST_DIR}/../cmake/VisionOptions.cmake)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../cmake")
+find_package(MNN REQUIRED)
 add_subdirectory(src)

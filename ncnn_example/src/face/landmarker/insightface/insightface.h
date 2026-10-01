@@ -6,20 +6,19 @@
 
 namespace mirror {
 class InsightfaceLandmarker : public Landmarker {
-public:
-	InsightfaceLandmarker();
-	~InsightfaceLandmarker();
+ public:
+  InsightfaceLandmarker();
+  ~InsightfaceLandmarker();
 
-	int LoadModel(const char* root_path);
-	int ExtractKeypoints(const cv::Mat& img_src,
-		const cv::Rect& face, std::vector<cv::Point2f>* keypoints);
+  int LoadModel(const char* root_path);
+  int ExtractKeypoints(const cv::Mat& img_src, const cv::Rect& face,
+                       std::vector<cv::Point2f>* keypoints);
 
-private:
-	ncnn::Net* insightface_landmarker_net_;
-	bool initialized;
+ private:
+  ncnn::Net* insightface_landmarker_net_;
+  bool initialized;
 };
 
-}
+}  // namespace mirror
 
-#endif // !_FACE_INSIGHTFACE_LANDMARKER_H_
-
+#endif  // !_FACE_INSIGHTFACE_LANDMARKER_H_

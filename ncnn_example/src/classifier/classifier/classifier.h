@@ -6,18 +6,12 @@
 namespace mirror {
 
 class Classifier {
-public:
-	virtual ~Classifier() {}
-	virtual int LoadModel(const char* root_path) = 0;
-	virtual int Classify(const cv::Mat& img_src, std::vector<ImageInfo>* images) = 0;
+ public:
+  virtual ~Classifier() {}
+  virtual int LoadModel(const char* root_path) = 0;
+  virtual int Classify(const cv::Mat& img_src, std::vector<ImageInfo>* images) = 0;
 };
 
+}  // namespace mirror
 
-
-}
-
-
-
-
-#endif // !_CLASSIFIER_H_
-
+#endif  // !_CLASSIFIER_H_

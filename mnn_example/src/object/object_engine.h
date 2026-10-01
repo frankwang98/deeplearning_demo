@@ -6,20 +6,17 @@
 
 namespace mirror {
 class ObjectEngine {
-public:
-    ObjectEngine();
-    ~ObjectEngine();
-    int Init(const char* root_path);
-    int DetectObject(const cv::Mat& img_src, std::vector<ObjectInfo>* objects);
+ public:
+  ObjectEngine();
+  ~ObjectEngine();
+  int Init(const char* root_path);
+  int DetectObject(const cv::Mat& img_src, std::vector<ObjectInfo>* objects);
 
-private:
-    bool initialized_;
-    MobilenetSSD* mobilenetssd_;
-
+ private:
+  bool initialized_;
+  MobilenetSSD* mobilenetssd_;
 };
 
-}
+}  // namespace mirror
 
-
-
-#endif // !_OBJECTER_H_
+#endif  // !_OBJECTER_H_

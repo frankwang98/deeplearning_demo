@@ -1,0 +1,31 @@
+# AI 学习路线
+
+这条路线面向第一次接触 AI、但愿意运行代码的人。每一阶段先理解一个问题，再完成一个可观察的实验。
+
+## 1. 训练到底在做什么
+
+先完成[第一课](first-model.md)。你需要能解释数据、模型、损失、优化器、训练和推理，并能从日志判断模型是否真的学到了规律。练习：分别用 `--lr 0.001`、`0.05`、`1` 训练，比较曲线和稳定性。
+
+## 2. 从数字到类别
+
+依次阅读 `pytorch_example/01-basics` 中的线性回归、逻辑回归和前馈神经网络。理解回归输出连续值，分类输出类别概率；观察训练集准确率和测试集准确率为何不同。
+
+## 3. 处理图片与序列
+
+运行 `pytorch_example/02-intermediate` 的 CNN、RNN、双向 RNN 和 ResNet。重点记录输入张量形状如何变化，以及卷积、循环单元、残差连接分别解决什么问题。
+
+## 4. 训练自己的数据
+
+`pytorch_example/lenet_mouth` 展示自定义视觉任务。先确认数据集划分，再训练和检测。练习：记录类别分布、固定随机种子、保留一次失败实验及原因。
+
+## 5. 把模型交给 C++
+
+阅读 [C++ 推理](cpp-inference.md)。理解模型转换、运行时、预处理、推理、后处理是一条不可拆开的契约。相同网络若归一化、颜色顺序或标签不同，也会给出错误结果。
+
+## 6. 进入工程系统
+
+根据方向选择 TensorRT、YOLOP、BEVDet、PointPillars 或 ROS 案例。先建立端到端延迟和任务指标，再优化单个算子。可继续阅读 `awesome_hub` 的[具身智能基础](https://github.com/frankwang98/awesome_hub/blob/main/docs/embodied-ai/foundations.md)和[部署与评测](https://github.com/frankwang98/awesome_hub/blob/main/docs/embodied-ai/deployment-evaluation.md)，把感知模型放进“感知 → 决策 → 执行 → 反馈”的完整闭环。
+
+## 学习记录模板
+
+每次实验记下：目标、环境、数据和模型来源、命令、结果、一个没理解的问题、下一次只改变的一个变量。这样“跑通代码”会逐渐变成可复现的工程能力。

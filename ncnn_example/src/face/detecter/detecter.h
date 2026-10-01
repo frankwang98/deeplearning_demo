@@ -1,57 +1,54 @@
 #ifndef _FACE_DETECTER_H_
 #define _FACE_DETECTER_H_
 
-#include "opencv2/core.hpp"
 #include "../common/common.h"
+#include "opencv2/core.hpp"
 
 namespace mirror {
 // 抽象类
 class Detecter {
-public:
-	virtual ~Detecter() {};
-	virtual int LoadModel(const char* root_path) = 0;
-	virtual int DetectFace(const cv::Mat& img_src, std::vector<FaceInfo>* faces) = 0;
-
+ public:
+  virtual ~Detecter(){};
+  virtual int LoadModel(const char* root_path) = 0;
+  virtual int DetectFace(const cv::Mat& img_src, std::vector<FaceInfo>* faces) = 0;
 };
 
 // 工厂基类
 class DetecterFactory {
-public:
-	virtual Detecter* CreateDetecter() = 0;
-	virtual ~DetecterFactory() {};
+ public:
+  virtual Detecter* CreateDetecter() = 0;
+  virtual ~DetecterFactory(){};
 };
 
 // 不同人脸检测器
 class CenterfaceFactory : public DetecterFactory {
-public:
-	CenterfaceFactory() {}
-	~CenterfaceFactory() {}
-	Detecter* CreateDetecter();
+ public:
+  CenterfaceFactory() {}
+  ~CenterfaceFactory() {}
+  Detecter* CreateDetecter();
 };
 
 class MtcnnFactory : public DetecterFactory {
-public:
-	MtcnnFactory() {}
-	~MtcnnFactory() {}
-	Detecter* CreateDetecter();
-
+ public:
+  MtcnnFactory() {}
+  ~MtcnnFactory() {}
+  Detecter* CreateDetecter();
 };
 
 class RetinafaceFactory : public DetecterFactory {
-public:
-	RetinafaceFactory() {}
-	~RetinafaceFactory() {}
-	Detecter* CreateDetecter();
+ public:
+  RetinafaceFactory() {}
+  ~RetinafaceFactory() {}
+  Detecter* CreateDetecter();
 };
 
 class AnticonvFactory : public DetecterFactory {
-public:
-	AnticonvFactory() {}
-	~AnticonvFactory() {}
-	Detecter* CreateDetecter();
+ public:
+  AnticonvFactory() {}
+  ~AnticonvFactory() {}
+  Detecter* CreateDetecter();
 };
 
-}
+}  // namespace mirror
 
-#endif // !_FACE_DETECTER_H_
-
+#endif  // !_FACE_DETECTER_H_

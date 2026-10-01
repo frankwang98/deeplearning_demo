@@ -5,39 +5,33 @@
 
 namespace mirror {
 class Landmarker {
-public:
-    virtual int Init(const char* model_path) = 0;
-    virtual int ExtractKeypoints(const cv::Mat& img_src, const cv::Rect& face, std::vector<cv::Point2f>* keypoints) = 0;
-    virtual ~Landmarker() {}
+ public:
+  virtual int Init(const char* model_path) = 0;
+  virtual int ExtractKeypoints(const cv::Mat& img_src, const cv::Rect& face,
+                               std::vector<cv::Point2f>* keypoints) = 0;
+  virtual ~Landmarker() {}
 };
 
 class LandmarkerFactory {
-public:
-    virtual Landmarker* CreateLandmarker() = 0;
-    virtual ~LandmarkerFactory() {}
+ public:
+  virtual Landmarker* CreateLandmarker() = 0;
+  virtual ~LandmarkerFactory() {}
 };
 
 class PFLDLandmarkerFactory : public LandmarkerFactory {
-public:
-    PFLDLandmarkerFactory() {}
-    Landmarker* CreateLandmarker();
-    ~PFLDLandmarkerFactory() {}
+ public:
+  PFLDLandmarkerFactory() {}
+  Landmarker* CreateLandmarker();
+  ~PFLDLandmarkerFactory() {}
 };
 
 class ZQLandmarkerFactory : public LandmarkerFactory {
-public:
-    ZQLandmarkerFactory() {}
-    Landmarker* CreateLandmarker();
-    ~ZQLandmarkerFactory() {}
+ public:
+  ZQLandmarkerFactory() {}
+  Landmarker* CreateLandmarker();
+  ~ZQLandmarkerFactory() {}
 };
 
+}  // namespace mirror
 
-
-
-}
-
-
-
-
-
-#endif // !_FACE_LANDMARKER_H_
+#endif  // !_FACE_LANDMARKER_H_

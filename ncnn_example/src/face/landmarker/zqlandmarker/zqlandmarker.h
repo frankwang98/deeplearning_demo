@@ -6,22 +6,21 @@
 
 namespace mirror {
 class ZQLandmarker : public Landmarker {
-public:
-	ZQLandmarker();
-	~ZQLandmarker();
+ public:
+  ZQLandmarker();
+  ~ZQLandmarker();
 
-	int LoadModel(const char* root_path);
-	int ExtractKeypoints(const cv::Mat& img_src,
-		const cv::Rect& face, std::vector<cv::Point2f>* keypoints);
+  int LoadModel(const char* root_path);
+  int ExtractKeypoints(const cv::Mat& img_src, const cv::Rect& face,
+                       std::vector<cv::Point2f>* keypoints);
 
-private:
-	ncnn::Net* zq_landmarker_net_;
-	const float meanVals[3] = { 127.5f, 127.5f, 127.5f };
-	const float normVals[3] = { 0.0078125f, 0.0078125f, 0.0078125f };
-	bool initialized;
+ private:
+  ncnn::Net* zq_landmarker_net_;
+  const float meanVals[3] = {127.5f, 127.5f, 127.5f};
+  const float normVals[3] = {0.0078125f, 0.0078125f, 0.0078125f};
+  bool initialized;
 };
 
-}
+}  // namespace mirror
 
-#endif // !_FACE_ZQLANDMARKER_H_
-
+#endif  // !_FACE_ZQLANDMARKER_H_
