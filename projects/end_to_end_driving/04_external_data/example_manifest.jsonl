@@ -1,0 +1,2 @@
+{"timestamp_ns":1000000000,"image":"camera/000001.png","speed_mps":7.8,"steering_rad":0.03,"acceleration_mps2":0.1,"waypoints_m":[[4.0,0.2],[8.0,0.5],[12.0,1.0]],"sequence":"town01_route03"}
+{"timestamp_ns":1100000000,"image":"camera/000002.png","speed_mps":7.9,"steering_rad":0.04,"acceleration_mps2":0.0,"waypoints_m":[[4.0,0.25],[8.0,0.55],[12.0,1.1]],"sequence":"town01_route03"}

@@ -42,3 +42,13 @@ jobs:
           python projects/end_to_end_driving/01_state_to_control/evaluate.py --checkpoint /tmp/end-to-end-state/policy.pt --output /tmp/end-to-end-state --episodes 12 --steps 300 --route-length 180
       - name: Check closed-loop driving
         run: python -c "import json; d=json.load(open('/tmp/end-to-end-state/evaluation.json')); assert d['learned']['completion_rate'] >= .9; assert d['learned']['off_road_rate'] <= .1"
+      - name: Train and evaluate vision policies
+        run: |
+          python projects/end_to_end_driving/02_image_to_control/train.py --epochs 80 --output /tmp/end-to-end-vision
+          python projects/end_to_end_driving/02_image_to_control/evaluate.py --checkpoint /tmp/end-to-end-vision/vision-policy.pt --output /tmp/end-to-end-vision --episodes 8 --steps 300 --route-length 180
+          python projects/end_to_end_driving/03_image_to_waypoints/train.py --epochs 80 --output /tmp/end-to-end-waypoints
+          python projects/end_to_end_driving/03_image_to_waypoints/evaluate.py --checkpoint /tmp/end-to-end-waypoints/waypoint-policy.pt --output /tmp/end-to-end-waypoints --episodes 8 --steps 300 --route-length 180
+      - name: Check visual closed-loop driving
+        run: python -c "import json; a=json.load(open('/tmp/end-to-end-vision/evaluation.json')); b=json.load(open('/tmp/end-to-end-waypoints/evaluation.json')); assert a['completion_rate'] >= .875 and b['completion_rate'] >= .875; assert a['off_road_rate'] <= .125 and b['off_road_rate'] <= .125"
+      - name: Validate the external-data contract
+        run: python projects/end_to_end_driving/04_external_data/validate_manifest.py projects/end_to_end_driving/04_external_data/example_manifest.jsonl

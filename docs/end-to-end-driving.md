@@ -15,15 +15,15 @@
 
 ## 第二阶段：图像到控制
 
-后续将用二维道路渲染器生成第一视角图片，把状态输入替换为图像。需要比较 CNN 的开环方向误差和闭环越界率，并加入阴影、噪声、路宽和未见弯道测试分布偏移。
+运行 [`02_image_to_control`](../projects/end_to_end_driving/02_image_to_control)。二维道路渲染器生成第一视角图片，CNN 把图片和车速直接映射为方向与加速度。使用与第一阶段相同的闭环仿真，比较视觉输入带来的误差。
 
 ## 第三阶段：图像到轨迹
 
-模型预测一组未来轨迹点，确定性控制器将轨迹转换为车辆控制。中间轨迹提供可视化和约束接口，适合加入可行驶区域、碰撞检查和紧急制动。
+运行 [`03_image_to_waypoints`](../projects/end_to_end_driving/03_image_to_waypoints)。模型预测一组未来轨迹点，确定性控制器将轨迹转换为车辆控制。中间轨迹提供可视化和约束接口，适合加入可行驶区域、碰撞检查和紧急制动。
 
 ## 第四阶段：接入真实工程
 
-通过 CARLA 或真实 ROS2 bag 获取带时间戳的传感器、车辆状态和专家轨迹，补齐数据切分、防止相邻帧泄漏、模型导出、推理延迟、回放与安全兜底。理论背景继续阅读 [`awesome_hub` 的端到端章节](https://github.com/frankwang98/awesome_hub/blob/main/docs/autonomous-driving/end-to-end.md)。
+[`04_external_data`](../projects/end_to_end_driving/04_external_data/README.md) 定义 CARLA 或真实 ROS2 bag 转换后的统一数据契约。真实接入还需根据具体版本实现数据导出，并补齐模型导出、推理延迟、回放与安全兜底。理论背景继续阅读 [`awesome_hub` 的端到端章节](https://github.com/frankwang98/awesome_hub/blob/main/docs/autonomous-driving/end-to-end.md)。
 
 ## 评测原则
 
